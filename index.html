@@ -8,8 +8,659 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
+  <style>
+   /* Variable CSS */
+:root{
+    --header-height:3rem;
+    /* color */
+    --hue:174;
+    --sat:63%;
+
+    --first-color:hsl(var(--hue),var(--sat), 40%);
+    --first-color-alt:hsl(var(--hue),var(--sat), 36%);
+    --text-color:hsl(var(--hue),8%, 35%);
+    --body-color:hsl(var(--hue),100%, 99%);
+    --container-color:#fff;
+
+    --body-font:sans-serif;
+    --h1-font-size:1.5rem;
+    --normal-font-size:.938rem;
+    --tiny-font-size:.625rem;
+    
+    --z-tooltip:10;
+    --z-fixed:100;
+}
+/* responsive  */
+ @media screen and (min-width:968px) {
+    :root{
+    --h1-font-size:2.25rem;
+    --normal-font-size:1rem;
+    }
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: var(--header-height) 0 0 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+img{
+    max-width:100% ;
+    height: auto;
+}
+.section{
+    padding: 4.5rem 0 2rem;   
+}
+.lyr{
+    background-image:url('img/Firefly --Design de Header Principal - Pagne Visco--_Imagine un header élégant avec un fond en pagne (3).jpg');
+    position: absolute;
+    height: 100%;
+    width: 6px;
+    border-radius: 5px;
+    transform: skew(20deg,12deg);
+}
+
+.section__title{
+    font-size: var(--h1-font-size);
+    color: var(--title-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.section__height{
+    height: auto;
+}
+.container{
+    max-width:968px ;
+    margin-left:1rem ;
+    margin-right:1rem ;
+}
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--container-color);
+    z-index: var(--z-fixed);
+    transition: .4s;
+}
+
+.nav{
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav__img{
+    width: 32px;
+    border-radius: 50%;
+}
+.nav__logo{
+    color: var(--title-color);
+    font-weight: 600;
+}
+@media screen and (max-width:767px) {
+    .nav__menu{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: var(--container-color);
+        box-shadow:0 -1px 12px hsla(var(--hue),var(--sat),15%,0.15);
+        width: 100%;
+        height: 4rem;
+        padding: 0 1rem;
+        display: grid;
+        align-content: center;
+        border-radius: 1.25rem 1.25rem 0 0;
+        transition: .4s;
+    }
+}
+
+.nav__list,
+.nav__link{
+display: flex;
+}
+.nav__link{
+    flex-direction:column ;
+    align-items: center;
+    row-gap:.25rem;
+    color: var(--title-color);
+    font-weight: 600;
+}
+
+.nav__list{
+    justify-content: space-between;
+}
+.nav__name{
+    font-size:var(--tiny-font-size) ;
+    display: none;   /* Minimalist design,hidden labels */
+}
+.nav__icon{
+    font-size: 1.5rem;
+}
+/* minimalist design, active link */
+.active-link::before{
+    content: '';
+    position: absolute;
+    bottom: -.5rem;
+    width: 4px;
+    height: 4px;
+    background-color: var(--first-color);
+    border-radius: 50%;
+}
+/* active link */
+.active-link{
+    position: relative;
+    color: var(--first-color);
+    transition: .3s;
+}
+/* change background header */
+.scroll-header{
+    box-shadow:  0 1px 12px hsla(var(--hue),var(--sat),15%,0.15);
+}
+
+/* medias queries */
+@media screen and (max-width:320px){
+    .nav__name{
+        display:none;
+    }
+}
+/* for medium devices */
+@media screen and (min-width:576px){
+    .nav__list{
+    justify-content: center;
+    column-gap:3rem;
+    }
+}
+@media screen and (min-width:767px) {
+    body{
+        margin: 0;
+    }
+    .section{
+        padding: 7rem 0 2rem;
+    }
+    .nav {
+        height: calc(var(--header-height)+1.5rem);
+    }
+    .nav__img{
+        display: none;
+    }
+    .nav__icon{
+        display: none;
+    }
+    .nav__name{
+        font-size: var(--normal-font-size);
+        display: block; /* minimalist design */
+    }
+    .nav__link:hover{
+        color:var(--first-color)
+    }
+    /* first design,active link */
+    /* .active-link::before{
+        content: '';
+        position: absolute;
+        bottom: -.75rem;
+        width: 4px;
+        height: 4px;
+        background-color: var(--first-color);
+        border-radius: 50%;
+    } */
+    /*minimalist  */
+    .active-link::before{
+        bottom: -.75rem;
+    }
+}
+/* large devices */
+@media screen and (min-width:1024px){
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+/* .radius{
+    border: 1px solid green;
+    width: 5%;
+    height: 5%;
+    border-radius:47% 53% 0% 100% / 43% 100% 0% 57% ;
+    background-color: aqua;
+    transform-origin: left right;
+    animation: lolo ease-in-out 5s;
+} */
+
+.cont__containe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding-top: 5rem;
+  }
+  
+  .cont__span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .line {
+    display: flex;
+    gap: 3px;
+    padding-bottom: 15px;
+  }
+  
+  .line span {
+    font-size: 24px;
+    position: relative;
+  }
+  .cont__span span {
+    font-size: 20px;
+    position: relative;
+  }
+  
+  /* Animation pour le mouvement des ballons */
+  @keyframes balloonFloat {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  /* Styles spécifiques pour chaque ballon */
+  .cont__span span:nth-child(odd) {
+    color: #ff6f61; /* Couleur du ballon */
+  }
+  
+  .cont__span span:nth-child(even) {
+    color: #f9e559; /* Couleur du ballon */
+  }
+  
+  /* Image pour représenter la bouche du ballon */
+  .cont__span span::after {
+    content: "";
+    display: block;
+    width: 25px;
+    height: 15px;
+    background-image: url('img/bougie.png'); /* Ajouter le chemin de votre image */
+    background-size: cover;
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Appliquer l'animation à chaque ballon */
+  .cont__span span:nth-child(1) {
+    animation: balloonFloat 3s ease-in-out infinite; /* Animation pour le premier ballon */
+  }
+  
+  .cont__span span:nth-child(2) {
+    animation: balloonFloat 3s ease-in-out 0.5s infinite; /* Animation pour le deuxième ballon */
+  }
+
+  .cont__span span:nth-child(4) {
+    animation: balloonFloat 3s ease-in-out 0.5s infinite; /* Animation pour le deuxième ballon */
+  }
+  .cont__span span:nth-child(5) {
+    animation: balloonFloat 3s ease-in-out infinite; /* Animation pour le premier ballon */
+  }
+  .cont__span span:nth-child(6) {
+    animation: balloonFloat 3s ease-in-out 0.5s infinite; /* Animation pour le deuxième ballon */
+  }
+  .cont__span span:nth-child(7) {
+    animation: balloonFloat 3s ease-in-out infinite; /* Animation pour le premier ballon */
+  }
+  .cont__span span:nth-child(8) {
+    animation: balloonFloat 3s ease-in-out 0.5s infinite; /* Animation pour le deuxième ballon */
+  }
+  .cont__span span:nth-child(9) {
+    animation: balloonFloat 3s ease-in-out infinite; /* Animation pour le premier ballon */
+  }
+  .cont__span span:nth-child(10) {
+    animation: balloonFloat 3s ease-in-out 0.5s infinite; /* Animation pour le deuxième ballon */
+  }
+  .cont__span span:nth-child(11) {
+    animation: balloonFloat 3s ease-in-out infinite; /* Animation pour le premier ballon */
+  }
+  .cont__span span:nth-child(12) {
+    animation: balloonFloat 3s ease-in-out 0.5s infinite; /* Animation pour le deuxième ballon */
+  }
+  /* grid designe📦📦 */
+
+  .wrappers{
+    
+    margin: 0 auto;
+  }
+
+  article{
+    height: 500px;
+    margin-top: 5em;
+    padding: 2em;
+    display: grid;
+    grid-template-areas: 
+        "tiger header header"
+        "tiger dog content"
+        "fish dog content";
+        gap: 2em;
+        grid-template-columns:repeat(2,2fr) 1fr ;
+        grid-template-rows:auto 1fr 100px;
+        position: relative;
+  }
+  /* @media screen and (max-width:700px) {
+    article{
+        
+        grid-template-columns:repeat(2,3fr) 1fr ;
+        grid-template-rows:2fr 1fr 100px ;
+    }
+  } */
+  article ::before{
+    position: absolute;
+    content: 'ODERE';
+    font-weight: 300;
+    z-index: -1;
+    font-size:5rem ;
+    top: -50px;
+    left: -50px;
+
+  }
+  .tiger{
+    grid-area: tiger;
+  }
+  h3{
+    grid-area: header;
+  }
+  .dog{
+    grid-area: dog;
+  }
+  .content{
+    grid-area: content;
+  }
+  .fish{
+    grid-area: fish;
+  }
+  article img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+}
+h3{
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin: 0;
+    line-height: 1em;
+}
+.content p,a{
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+.content p{
+    width: auto;
+}
+a{
+    text-decoration: none;
+    color: #e6cc09;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+.content{
+    display: flex;
+    flex-direction:space-between ;
+}
+.lax-box{
+    padding: 90em 0;
+}
+.lax{
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 1px;
+    background-color:rgb(208, 241, 241) ;
+    /* background-image: linear-gradient(315deg,rgb(145, 124, 19) 0%,rgb(154, 220, 154) 75%); */
+    background-image: url("img/Firefly --Design de Header Principal - Pagne Visco--_Imagine un header élégant avec un fond en pagne (1).jpg") ;
+    border-radius: 25px;
+}
+.lax-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.lax-front{
+    background: url("image/ch37_1.jpeg") center center no-repeat;
+    transform: translateZ(0);
+    width: 400px;
+}
+
+.lax-black{
+    background: url("image/1555b116-5281-4c77-8028-0669a7cd42aa_1.jpeg") center center no-repeat;
+    transform: translateZ(-1px) scale(2);
+    width: 500px;
+    height: 200px;
+}
+
+.gallery{
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vmin;
+    padding: 0 14px;
+}
+.gallery li{
+    list-style-type: none;
+    height: 250px;
+    flex-grow: 1;
+}
+.gallery img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video{
+    background-image: url("img/Firefly --Design de Header Principal - Pagne Visco--_Imagine un header élégant avec un fond en pagne (1).jpg");
+    padding: 10px;
+}
+.gat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 20px ;
+    font-weight: 600;
+}
+.gat div{
+    box-shadow: 2px 0px 4px rgba(rgb(191, 121, 121), rgb(145, 173, 145), rgb(35, 35, 99), alpha);
+}
+.gat img{
+    width: 15%;
+}
+
+/* enfant */
+
+
+::selection{
+    color: #fff;
+    background: #6563ff;
+  }
+  .wt{
+    padding: 25px;
+    background: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  .cards, .card, .view, .details, p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cards{
+    height: 350px;
+    width: 350px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .cards .card{
+    cursor: pointer;
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    height: calc(100% / 4 - 10px);
+    width: calc(100% / 4 - 10px);
+  }
+  .card.shake{
+    animation: shake 0.35s ease-in-out;
+  }
+  @keyframes shake {
+    0%, 100%{
+      transform: translateX(0);
+    }
+    20%{
+      transform: translateX(-13px);
+    }
+    40%{
+      transform: translateX(13px);
+    }
+    60%{
+      transform: translateX(-8px);
+    }
+    80%{
+      transform: translateX(8px);
+    }
+  }
+  .cards .card .view{
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    background: #fff;
+    border-radius: 7px;
+    backface-visibility: hidden;
+    transition: transform 0.25s linear;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+  .card .front-view img{
+    max-width: 170px;
+  }
+  .card .back-view{
+    transform: rotateY(-180deg);
+  }
+  .card .back-view img{
+    max-width: 40px;
+  }
+  .card.flip .front-view{
+    transform: rotateY(180deg);
+  }
+  .card.flip .back-view{
+    transform: rotateY(0);
+  }
+  
+  .details{
+    width: 100%;
+    margin-top: 15px;
+    padding: 0 20px;
+    border-radius: 7px;
+    background: #fff;
+    height: calc(100% / 4 - 30px);
+    justify-content: space-between;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+  .details p{
+    font-size: 18px;
+    height: 17px;
+    padding-right: 18px;
+    border-right: 1px solid #ccc;
+  }
+  .details p span{
+    margin-left: 8px;
+  }
+  .details p b{
+    font-weight: 500;
+  }
+  .details button{
+    cursor: pointer;
+    font-size: 14px;
+    color: #6563ff;
+    border-radius: 4px;
+    padding: 4px 11px;
+    background: #fff;
+    border: 2px solid #6563ff;
+    transition: 0.3s ease;
+  }
+  .details button:hover{
+    color: #fff;
+    background: #6563ff;
+  }
+  
+  @media screen and (max-width: 700px) {
+    .cards{
+      height: 350px;
+      width: 350px;
+    }
+    .card .front-view img{
+      max-width: 16px;
+    }
+    .card .back-view img{
+      max-width: 40px;
+    }
+  }
+  
+  @media screen and (max-width: 530px) {
+    .cards{
+      height: 300px;
+      width: 300px;
+    }
+    .card .back-view img{
+      max-width: 35px;
+    }
+    .details{
+      margin-top: 10px;
+      padding: 0 15px;
+      height: calc(100% / 4 - 20px);
+    }
+    .details p{
+      height: 15px;
+      font-size: 17px;
+      padding-right: 13px;
+    }
+    .details button{
+      font-size: 13px;
+      padding: 5px 10px;
+      border: none;
+      color: #fff;
+      background: #6563ff;
+    }
+  }
+
+
+
+  
+
+
+  </style>
   <body>
-    <body>
+    
       <header class="header" id="header">
     
         <nav class="nav  container">
