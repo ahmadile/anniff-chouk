@@ -1,5 +1,5 @@
 import './anifs.css'
-import './images'
+
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll('section[id]')
 
