@@ -351,13 +351,7 @@ display: flex;
         grid-template-rows:auto 1fr 100px;
         position: relative;
   }
-  /* @media screen and (max-width:700px) {
-    article{
-        
-        grid-template-columns:repeat(2,3fr) 1fr ;
-        grid-template-rows:2fr 1fr 100px ;
-    }
-  } */
+ 
   article ::before{
     position: absolute;
     content: 'ODERE';
